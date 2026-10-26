@@ -407,28 +407,6 @@
 
     // 2. Bestsellers & Live POS Grid
     renderHomeBestsellersGrid();
-
-    // 3. Instagram & Brand Community Grid ("Shop the Look")
-    const instaGrid = document.getElementById("home-insta-grid");
-    if (instaGrid) {
-      instaGrid.innerHTML = DATA.communityLooks
-        .map(
-          (look) => `
-        <div class="insta-card" data-action="open-look-modal" data-look-id="${look.id}">
-          <img src="${look.image}" alt="${look.caption}" loading="lazy" />
-          <div class="insta-overlay">
-            <span class="insta-handle">${look.handle}</span>
-            <p class="insta-caption">${look.caption}</p>
-            <span class="insta-shop-pill">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
-              Shop the Look (${look.productIds.length} Items)
-            </span>
-          </div>
-        </div>
-      `
-        )
-        .join("");
-    }
   }
 
   function renderHomeBestsellersGrid() {
@@ -1051,54 +1029,6 @@
     }
   }
 
-  function openLookModal(lookId) {
-    const look = DATA.communityLooks.find((l) => l.id === lookId);
-    if (!look) return;
-    const modal = document.getElementById("modal-look");
-    const content = document.getElementById("modal-look-body");
-    if (!modal || !content) return;
-
-    const taggedProducts = look.productIds.map(getProduct).filter(Boolean);
-
-    content.innerHTML = `
-      <div style="display:grid; grid-template-columns: 1fr 1.15fr; gap:1.5rem; align-items:start;">
-        <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-pink);">
-          <img src="${look.image}" alt="${look.handle}" style="width:100%; height:360px; object-fit:cover;" />
-          <div style="padding:0.85rem; background:var(--pink-blush);">
-            <strong style="color:var(--pink-magenta); font-size:0.85rem;">${look.handle}</strong>
-            <p style="font-size:0.8rem; color:var(--text-espresso); margin-top:0.25rem;">${look.caption}</p>
-          </div>
-        </div>
-        <div>
-          <span class="eyebrow">Featured in This Look</span>
-          <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:1rem;">Shop the Routine</h3>
-          <div style="display:flex; flex-direction:column; gap:0.85rem;">
-            ${taggedProducts
-              .map(
-                (p) => `
-              <div style="display:flex; align-items:center; gap:0.85rem; padding:0.65rem; border:1px solid var(--border-subtle); border-radius:var(--radius-sm);">
-                <img src="${p.image}" alt="${p.name}" style="width:56px; height:64px; border-radius:6px;" />
-                <div style="flex:1; min-width:0;">
-                  <div style="font-weight:600; font-size:0.86rem;">${p.name}</div>
-                  <div style="font-size:0.78rem; color:var(--pink-magenta); font-weight:700;">${fmtPrice(p.price)}</div>
-                  <div style="margin-top:3px;">${renderStockBadge(p)}</div>
-                </div>
-                ${
-                  p.stockStatus === "out_of_stock"
-                    ? `<button class="btn btn-secondary" style="padding:0.45rem 0.85rem; font-size:0.75rem;" data-action="open-notify" data-id="${p.id}">Notify</button>`
-                    : `<button class="btn btn-primary" style="padding:0.45rem 0.85rem; font-size:0.75rem;" data-action="quick-add" data-id="${p.id}">+ Bag</button>`
-                }
-              </div>
-            `
-              )
-              .join("")}
-          </div>
-        </div>
-      </div>
-    `;
-    modal.classList.add("open");
-  }
-
   function openCheckoutSimModal() {
     closeAllDrawers();
     const modal = document.getElementById("modal-checkout-sim");
@@ -1690,10 +1620,6 @@
           showToastNotification("🎉 Pre-Auth Order Placed! Sent to Toast POS for physical shelf verification.");
           break;
         }
-
-        case "open-look-modal":
-          openLookModal(target.dataset.lookId);
-          break;
 
         case "open-strategy-modal":
           renderStrategyModalContent();
