@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ROSÉLIA ATELIER | Luxury Beauty Supply, HD Lace Wig Bar &amp; Skincare</title>
+  <!-- Browser Identity & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="alternate icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+  <meta name="theme-color" content="#FFF0F3" />
+  <meta name="description" content="Rosélia Atelier - Modern luxury beauty supply &amp; HD extension bar with real-time Toast POS physical shelf inventory verification." />
   <!-- Google Fonts: Cormorant Garamond (Luxury Editorial), Plus Jakarta Sans (Clean UI), JetBrains Mono (POS Sync) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,9 +77,14 @@
   <header class="site-header">
     <div class="container header-main">
       <!-- Brand Logo -->
-      <div class="brand-logo" data-action="nav-home">
-        <div class="brand-logo-title">ROSÉLIA <span>ATELIER</span></div>
-        <div class="brand-logo-sub">Beauty Supply &amp; HD Extension Bar</div>
+      <div class="brand-logo" data-action="nav-home" role="button" tabindex="0" title="Return to Rosélia Atelier Homepage">
+        <div class="brand-logo-emblem">
+          <img src="assets/favicon.svg" alt="Rosélia Monogram Crest" width="38" height="38" />
+        </div>
+        <div class="brand-logo-text">
+          <div class="brand-logo-title">ROSÉLIA <span>ATELIER</span></div>
+          <div class="brand-logo-sub">Beauty Supply &amp; HD Extension Bar</div>
+        </div>
       </div>
 
       <!-- Mega-Menu Navigation (Populated Dynamically via data.js) -->
@@ -483,10 +494,15 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="brand-logo-title" style="color:var(--bg-white); margin-bottom:0.5rem;">
-            ROSÉLIA <span style="color:var(--pink-dusty);">ATELIER</span>
+          <div class="footer-brand-header">
+            <div class="brand-logo-emblem footer-logo-emblem">
+              <img src="assets/favicon.svg" alt="Rosélia Monogram Crest" width="34" height="34" />
+            </div>
+            <div class="brand-logo-title" style="color:var(--bg-white); margin-bottom:0;">
+              ROSÉLIA <span style="color:var(--pink-dusty);">ATELIER</span>
+            </div>
           </div>
-          <p style="font-size:0.85rem; color:rgba(250,248,245,0.75); margin-bottom:1.2rem;">
+          <p style="font-size:0.85rem; color:rgba(250,248,245,0.75); margin-bottom:1.2rem; margin-top:0.75rem;">
             Modern luxury beauty supply &amp; extension bar combining Glossier-inspired digital elegance with real-time Toast POS physical shelf verification.
           </p>
           <div class="pos-live-pill" data-action="open-strategy-modal">
@@ -587,7 +603,10 @@
   <!-- Slide-Out Mobile Navigation Drawer -->
   <aside class="slide-drawer slide-drawer-left" id="mobile-nav-drawer" aria-label="Mobile Navigation">
     <div class="drawer-header">
-      <div class="drawer-title">ROSÉLIA ATELIER</div>
+      <div style="display:flex; align-items:center; gap:0.65rem;">
+        <img src="assets/favicon.svg" alt="Rosélia Logo" width="30" height="30" style="border-radius:9px; box-shadow:0 2px 8px rgba(224,87,128,0.2);" />
+        <div class="drawer-title" style="margin:0;">ROSÉLIA ATELIER</div>
+      </div>
       <button class="icon-btn" data-action="close-drawers" aria-label="Close Menu">✕</button>
     </div>
     <div class="drawer-body">

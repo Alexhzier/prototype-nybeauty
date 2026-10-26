@@ -498,9 +498,41 @@ ul {
 
 .brand-logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   cursor: pointer;
   user-select: none;
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover {
+  transform: translateY(-1px);
+}
+
+.brand-logo-emblem {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .brand-logo-emblem {
+  transform: rotate(-3deg) scale(1.04);
+}
+
+.brand-logo-emblem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(224, 87, 128, 0.16));
+}
+
+.brand-logo-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-logo-title {
@@ -2547,6 +2579,29 @@ ul {
   margin-bottom: 3rem;
 }
 
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo-emblem {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo-emblem img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
 /* ==========================================================================
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
@@ -2616,6 +2671,17 @@ ul {
   }
   .search-wrapper {
     display: none;
+  }
+  .brand-logo-emblem {
+    width: 32px;
+    height: 32px;
+  }
+  .brand-logo-title {
+    font-size: 1.45rem;
+  }
+  .brand-logo-sub {
+    font-size: 0.52rem;
+    letter-spacing: 0.16em;
   }
   .floating-strategy-btn span {
     display: none;

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64">
+  <defs>
+    <linearGradient id="logoBgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF0F3"/>
+      <stop offset="100%" stop-color="#FCE1E7"/>
+    </linearGradient>
+    <linearGradient id="logoGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EED58E"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#AA820A"/>
+    </linearGradient>
+    <linearGradient id="logoRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F4ACB7"/>
+      <stop offset="50%" stop-color="#E05780"/>
+      <stop offset="100%" stop-color="#C83E5B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left Emblem Icon -->
+  <g transform="translate(4, 4)">
+    <rect x="2" y="2" width="52" height="52" rx="16" fill="url(#logoBgGrad)" stroke="url(#logoGold)" stroke-width="1.8"/>
+    <circle cx="28" cy="28" r="21" fill="none" stroke="#F4ACB7" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.8"/>
+    
+    <!-- Rose Petal Flourish -->
+    <path d="M38 12 C40 8, 45 10, 44 14 C43 17, 39 17, 38 12 Z" fill="url(#logoRose)" opacity="0.9"/>
+    
+    <!-- Serif R -->
+    <path d="M19 16 L25 16 L25 40 L19 40 L19 43 L30 43 L30 40 L25 40 L25 29 L30 29 L35 41 L37 43 L43 43 L43 41 L38 33 C42 31, 44 28, 44 23 C44 18, 40 16, 32 16 L19 16 Z M25 19 L31 19 C36 19, 39 20, 39 23 C39 27, 36 28, 31 28 L25 28 Z" fill="#2B2123"/>
+    <path d="M25 19 L31 19 C36 19, 39 20, 39 23 C39 27, 36 28, 31 28 L25 28 Z" fill="url(#logoRose)" opacity="0.3"/>
+  </g>
+
+  <!-- Typography Right -->
+  <g transform="translate(70, 0)">
+    <text x="0" y="33" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="700" letter-spacing="2.5" fill="#2B2123">
+      ROSÉLIA <tspan fill="url(#logoRose)">ATELIER</tspan>
+    </text>
+    <text x="1" y="49" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="600" letter-spacing="2.8" fill="#7A686C">
+      BEAUTY SUPPLY &amp; HD EXTENSION BAR
+    </text>
+  </g>
+</svg>
