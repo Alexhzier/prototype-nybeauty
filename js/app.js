@@ -164,33 +164,27 @@
   const DEPARTMENT_META = {
     "All": {
       title: "All Collections",
-      subtitle: "2,480 curated beauty formulas, virgin human hair units, and pro styling tools.",
-      count: "2,480"
+      subtitle: "Curated luxury beauty formulas, virgin human hair units, and pro styling tools."
     },
     "Wigs & Extensions": {
       title: "Wigs & Extensions",
-      subtitle: "Raw single-donor bundles, 13x6 HD Swiss lace units, and glueless melt essentials.",
-      count: "420"
+      subtitle: "Raw single-donor bundles, HD Swiss lace units, and glueless melt essentials."
     },
     "Hair Care": {
       title: "Hair Care",
-      subtitle: "French rosehip & honey elixirs, bond-repair masques, and coil sculpting care.",
-      count: "680"
+      subtitle: "French rosehip & honey elixirs, bond-repair masques, and coil sculpting care."
     },
     "Skincare": {
       title: "Skincare",
-      subtitle: "Multi-peptide barrier serums, rosewater dew mists, and whipped cloud creams.",
-      count: "520"
+      subtitle: "Multi-peptide barrier serums, rosewater dew mists, and whipped cloud creams."
     },
     "Makeup": {
       title: "Makeup",
-      subtitle: "Peptide plumping lip oils, whipped watercolor blushes, and soft-focus tints.",
-      count: "490"
+      subtitle: "Peptide plumping lip oils, whipped watercolor blushes, and soft-focus tints."
     },
     "Tools & Accessories": {
       title: "Tools & Accessories",
-      subtitle: "Champagne titanium silk-press irons, 22-momme pure silk bonnets, and melt bands.",
-      count: "370"
+      subtitle: "Champagne titanium silk-press irons, pure silk bonnets, and melt bands."
     }
   };
 
@@ -529,12 +523,10 @@
       const depts = ["All", "Wigs & Extensions", "Hair Care", "Skincare", "Makeup", "Tools & Accessories"];
       ribbonEl.innerHTML = depts
         .map((d) => {
-          const count = d === "All" ? DATA.products.length : DATA.products.filter((p) => p.category === d).length;
           const isActive = f.category === d;
           return `
             <button class="dept-pill-btn ${isActive ? "active" : ""}" data-action="go-category" data-category="${d}">
               <span>${d === "All" ? "All Collections" : d}</span>
-              <span class="dept-badge">${count}</span>
             </button>
           `;
         })
@@ -553,8 +545,6 @@
     if (catListEl) {
       catListEl.innerHTML = categories
         .map((c) => {
-          const count =
-            c === "All" ? DATA.products.length : DATA.products.filter((p) => p.category === c).length;
           const isActive = f.category === c;
           return `
             <label class="filter-checkbox-label ${isActive ? "active-dept-row" : ""}">
@@ -562,7 +552,6 @@
                 <input type="radio" name="cat-filter" value="${c}" ${isActive ? "checked" : ""} data-action="filter-cat" />
                 <span>${c}</span>
               </span>
-              <span class="filter-sku-count">${count}</span>
             </label>
           `;
         })
@@ -575,14 +564,12 @@
     if (brandListEl) {
       brandListEl.innerHTML = allBrands
         .map((b) => {
-          const count = DATA.products.filter((p) => p.brand === b).length;
           return `
             <label class="filter-checkbox-label">
               <span class="filter-checkbox-left">
                 <input type="checkbox" value="${b}" ${f.brands.includes(b) ? "checked" : ""} data-action="filter-brand" />
                 <span>${b}</span>
               </span>
-              <span class="filter-sku-count">${count}</span>
             </label>
           `;
         })
@@ -637,7 +624,7 @@
     // Results Count & Grid
     const countLabel = document.getElementById("catalog-results-count");
     if (countLabel) {
-      countLabel.innerHTML = `Showing <strong>${Math.min(filtered.length, f.visibleCount)}</strong> of <strong>${filtered.length}</strong> curated SKUs (Connected to Toast POS Catalog: 2,480+ Store Items)`;
+      countLabel.innerHTML = `Showing curated luxury beauty collection • Real-time Toast POS shelf verification`;
     }
 
     const catalogGrid = document.getElementById("catalog-product-grid");
@@ -666,15 +653,15 @@
       const pct = filtered.length > 0 ? Math.round((shown / filtered.length) * 100) : 100;
       paginationEl.innerHTML = `
         <div style="font-size: 0.85rem; color: var(--text-mauve);">
-          Displaying <strong>${shown}</strong> of <strong>${filtered.length}</strong> filtered products
+          Displaying curated Rosélia Atelier beauty collection
         </div>
         <div class="progress-bar-track">
           <div class="progress-bar-fill" style="width: ${pct}%;"></div>
         </div>
         ${
           shown < filtered.length
-            ? `<button class="btn btn-secondary" data-action="load-more-catalog">Load More SKUs (${filtered.length - shown} Remaining)</button>`
-            : `<span style="font-size:0.78rem; color: var(--text-mauve);">All matching SKUs loaded • Ready for 2,400+ SKU pagination</span>`
+            ? `<button class="btn btn-secondary" data-action="load-more-catalog">Load More Curated Beauty Items</button>`
+            : `<span style="font-size:0.78rem; color: var(--text-mauve);">All matching items loaded • Toast POS floor sync active</span>`
         }
       `;
     }

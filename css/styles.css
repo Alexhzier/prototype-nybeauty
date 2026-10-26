@@ -1748,18 +1748,7 @@ ul {
 }
 
 .dept-pill-btn .dept-badge {
-  font-size: 0.7rem;
-  padding: 0.1rem 0.45rem;
-  border-radius: var(--radius-pill);
-  background: var(--pink-blush);
-  color: var(--text-mauve);
-  font-weight: 600;
-  transition: all 0.22s var(--ease-spa);
-}
-
-.dept-pill-btn.active .dept-badge {
-  background: rgba(255, 255, 255, 0.25);
-  color: var(--bg-white);
+  display: none !important;
 }
 
 /* Sidebar Active Category Highlight */
@@ -1894,11 +1883,7 @@ ul {
 }
 
 .filter-sku-count {
-  font-size: 0.74rem;
-  color: var(--text-mauve);
-  background: var(--bg-ivory);
-  padding: 0.1rem 0.45rem;
-  border-radius: var(--radius-pill);
+  display: none !important;
 }
 
 /* Catalog Toolbar */
@@ -2631,9 +2616,20 @@ ul {
 }
 
 @media (max-width: 820px) {
+  /* Phone/Tablet: Remove sticky following header & bars so they do NOT constantly follow when scrolling */
+  .site-header {
+    position: static !important;
+    top: auto !important;
+  }
+  .catalog-dept-ribbon-bar {
+    position: static !important;
+    top: auto !important;
+  }
+
   /* Remove noisy In-Store Pickup notification & sync button on mobile/tablet */
   .announcement-bar {
-    position: static;
+    position: static !important;
+    top: auto !important;
     padding: 0.42rem 0;
   }
   .announcement-pickup-item,
