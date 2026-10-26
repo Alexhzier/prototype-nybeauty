@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROSÉLIA ATELIER | Luxury Beauty Supply, HD Lace Wig Bar &amp; Skincare</title>
+  <!-- Google Fonts: Cormorant Garamond (Luxury Editorial), Plus Jakarta Sans (Clean UI), JetBrains Mono (POS Sync) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. STICKY ANNOUNCEMENT BAR
+       ======================================================================== -->
+  <div class="announcement-bar">
+    <div class="container announcement-inner">
+      <div class="announcement-perks">
+        <span>✨ <strong>Real-Time In-Store Pickup Available</strong> (Ready in 1 Hr)</span>
+        <span class="announcement-dot">•</span>
+        <span>Free Luxury Shipping Over $50</span>
+        <span class="announcement-dot">•</span>
+        <span>Pre-Authorized Checkout (Zero Overselling Guarantee)</span>
+      </div>
+      <button class="pos-live-pill" data-action="trigger-pos-sync" title="Click to trigger live Toast POS shelf inventory sync">
+        <span class="pulse-dot-green"></span>
+        <span>Toast POS Shelf Sync: <strong class="pos-sync-time-label">2 mins ago</strong> ↻</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. NAVIGATION HEADER WITH MEGA-MENU & INSTANT SEARCH SUGGESTIONS
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container header-main">
+      <!-- Brand Logo -->
+      <div class="brand-logo" data-action="nav-home">
+        <div class="brand-logo-title">ROSÉLIA <span>ATELIER</span></div>
+        <div class="brand-logo-sub">Beauty Supply &amp; HD Extension Bar</div>
+      </div>
+
+      <!-- Mega-Menu Navigation (Populated Dynamically via data.js) -->
+      <nav class="primary-nav" id="primary-nav-list" aria-label="Main Categories"></nav>
+
+      <!-- Search, Wishlist, Cart & Mobile Trigger -->
+      <div class="header-actions">
+        <div class="search-wrapper">
+          <div class="search-input-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--pink-magenta); flex-shrink:0;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search-input" placeholder="Search HD wigs, lip oils, SKU..." autocomplete="off" />
+          </div>
+
+          <!-- Instant Mock Search Dropdown Suggestions -->
+          <div class="search-dropdown" id="search-suggestions-dropdown">
+            <div class="search-dropdown-header">
+              <span>Trending Searches</span>
+              <span style="color:var(--status-green);">● Live POS Stock</span>
+            </div>
+            <div class="search-quick-tags">
+              <button class="search-tag-chip" data-action="quick-search-tag" data-tag="HD Lace">13x6 HD Lace</button>
+              <button class="search-tag-chip" data-action="quick-search-tag" data-tag="Miel">Honey Hair Elixir</button>
+              <button class="search-tag-chip" data-action="quick-search-tag" data-tag="Lip">Peptide Lip Oil</button>
+              <button class="search-tag-chip" data-action="quick-search-tag" data-tag="Titanium">450°F Silk Press</button>
+            </div>
+            <div class="search-dropdown-header" style="margin-top:0.25rem;">
+              <span>Instant Product Matches</span>
+              <button style="color:var(--pink-magenta); font-weight:700;" data-action="nav-catalog">View All →</button>
+            </div>
+            <div id="search-suggestions-list"></div>
+          </div>
+        </div>
+
+        <!-- Wishlist Button -->
+        <button class="icon-btn" data-action="nav-catalog" title="Saved Wishlist Items" aria-label="Wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-counter wishlist-count-badge">1</span>
+        </button>
+
+        <!-- Cart Drawer Trigger -->
+        <button class="icon-btn" data-action="open-cart" title="Open Shopping Bag" aria-label="Shopping Bag">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge-counter cart-count-badge">2</span>
+        </button>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="icon-btn mobile-menu-btn" data-action="open-mobile-nav" aria-label="Open Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       3. SPA VIEW 1: HOMEPAGE (#view-home)
+       ======================================================================== -->
+  <main id="view-home" class="spa-view view-visible view-active">
+    <!-- Editorial Split-Screen Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <span class="pulse-dot-green"></span>
+            <span>LIVE TOAST POS INVENTORY • SOHO &amp; BUCKHEAD FLAGSHIP</span>
+          </div>
+
+          <h1 class="hero-title">
+            Elevated Beauty Supply, <em>Synced Live</em> From Our Shelves to Your Vanity.
+          </h1>
+
+          <p class="hero-description">
+            From single-donor Swiss HD Lace Wigs and Honey-Infused Silk Elixirs to Peptide Lip Oils. Shop online with real-time shelf accuracy and 1-hour in-store pickup.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="btn btn-primary" data-action="nav-catalog">
+              Shop Bestsellers
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <button class="btn btn-secondary" data-action="go-category" data-category="Wigs & Extensions">
+              Explore New Arrivals
+            </button>
+          </div>
+
+          <div class="hero-trust-metrics">
+            <div>
+              <div class="trust-metric-val">2,480+</div>
+              <div class="trust-metric-label">Beauty &amp; Hair SKUs Synced via Toast POS</div>
+            </div>
+            <div>
+              <div class="trust-metric-val">1-Hour</div>
+              <div class="trust-metric-label">Verified In-Store Beauty Bar Pickup</div>
+            </div>
+            <div>
+              <div class="trust-metric-val">100%</div>
+              <div class="trust-metric-label">Pre-Auth Shelf Guarantee (No Oversells)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual Arch & Floating Product Badges -->
+        <div class="hero-visual">
+          <!-- Floating Badge 1: Real-Time POS Sync -->
+          <div class="floating-badge floating-badge-top">
+            <span class="status-dot green" style="width:10px; height:10px;"></span>
+            <div>
+              <div style="font-size:0.76rem; font-weight:700; color:var(--status-green);">🟢 In Stock Online &amp; In-Store</div>
+              <div style="font-size:0.7rem; color:var(--text-mauve);">420+ HD Wigs &amp; Bundles • Synced 2m ago</div>
+            </div>
+          </div>
+
+          <div class="hero-arch-frame">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=85" alt="Luxury Beauty & Hair Extensions Editorial" />
+          </div>
+
+          <!-- Floating Badge 2: Interactive Spotlight Product -->
+          <div class="floating-badge floating-badge-bottom" data-action="open-pdp" data-id="prod-01">
+            <img class="floating-badge-thumb" src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=200&q=80" alt="Miel Elixir" />
+            <div>
+              <div style="font-size:0.68rem; font-weight:700; text-transform:uppercase; color:var(--pink-magenta);">Cult Favorite • $44.00</div>
+              <div style="font-family:var(--font-serif); font-size:0.98rem; font-weight:700;">Miel &amp; Rose Hair Elixir →</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Carousel (Instagram Story / Arch Highlights) -->
+    <section class="category-stories-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <span class="eyebrow">Curated Beauty Aisles</span>
+            <h2 class="section-title">Shop by <em>Beauty Ritual</em></h2>
+          </div>
+          <p class="section-subtitle">
+            Tap any arch highlight below to filter our live-synced beauty supply catalog by category or in-store stock urgency.
+          </p>
+        </div>
+
+        <div class="category-carousel-track" id="home-category-stories"></div>
+      </div>
+    </section>
+
+    <!-- Bestsellers & Real-Time POS Inventory Grid -->
+    <section class="bestsellers-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <span class="eyebrow">Live Shelf Availability</span>
+            <h2 class="section-title">Cult <em>Bestsellers</em> &amp; Store Favorites</h2>
+          </div>
+
+          <div class="filter-pills-row">
+            <button class="filter-tab-btn active" data-home-tab="all">All Bestsellers</button>
+            <button class="filter-tab-btn" data-home-tab="trending">🟢 Trending In-Store</button>
+            <button class="filter-tab-btn" data-home-tab="new">✨ New Arrivals</button>
+            <button class="filter-tab-btn" data-home-tab="low_stock">🟠 Low Stock &amp; Restock Alerts</button>
+          </div>
+        </div>
+
+        <div class="product-grid" id="home-bestsellers-grid"></div>
+
+        <div style="text-align:center; margin-top:2.75rem;">
+          <button class="btn btn-secondary" data-action="nav-catalog">
+            Browse Complete 2,480+ SKU Beauty Supply Catalog →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Omnichannel Toast POS Stock Confirmation Guarantee Section -->
+    <section class="pos-highlight-banner">
+      <div class="container pos-highlight-grid">
+        <div>
+          <span class="eyebrow" style="color:var(--accent-gold);">Zero Overselling Architecture</span>
+          <h2 class="section-title" style="color:var(--bg-ivory); margin-top:0.35rem;">
+            Why Our <em style="color:var(--pink-dusty);">Toast POS</em> Pre-Auth Guarantee Protects Every Order
+          </h2>
+          <p style="color:rgba(250,248,245,0.82); font-size:0.95rem; margin-top:0.75rem;">
+            In a fast-moving physical beauty supply store, the last 24" HD Lace Wig or Viral Lip Oil can sell to a walk-in shopper at any moment. We never charge your card until your item is physically scanned and verified in your bag.
+          </p>
+
+          <div class="pos-steps-row">
+            <div class="pos-step-card">
+              <div class="pos-step-num">01 / PRE-AUTHORIZE</div>
+              <div class="pos-step-title">Card Hold Only at Checkout</div>
+              <div class="pos-step-desc">Your payment method is only pre-authorized ($0 captured) when you submit your online order.</div>
+            </div>
+            <div class="pos-step-card">
+              <div class="pos-step-num">02 / TOAST POS SCAN</div>
+              <div class="pos-step-title">Physical Shelf Verification</div>
+              <div class="pos-step-desc">Our in-store beauty associates pull your item from the exact aisle &amp; verify barcode stock in Toast POS.</div>
+            </div>
+            <div class="pos-step-card">
+              <div class="pos-step-num">03 / FULFILL &amp; CAPTURE</div>
+              <div class="pos-step-title">1-Hr Pickup or Same-Day Ship</div>
+              <div class="pos-step-desc">Only after physical verification is your order finalized and ready at our express pickup bar.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.07); border:1px solid var(--accent-gold); border-radius:var(--radius-lg); padding:2rem;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-gold);">LIVE STORE TELEMETRY</span>
+            <span class="pos-live-pill" data-action="trigger-pos-sync">
+              <span class="pulse-dot-green"></span> Sync Now
+            </span>
+          </div>
+          <h3 style="font-family:var(--font-serif); font-size:1.65rem; margin-bottom:0.65rem;">
+            Rosélia Flagship Beauty Bar
+          </h3>
+          <p style="font-size:0.84rem; color:rgba(250,248,245,0.78); margin-bottom:1.25rem;">
+            482 Broome St, SoHo • Open Today 9:00 AM – 8:00 PM<br />
+            Express Pickup Counter &amp; Licensed Stylist Consultation Desk
+          </p>
+          <div style="display:flex; flex-direction:column; gap:0.65rem;">
+            <button class="btn btn-primary" style="width:100%;" data-action="open-strategy-modal">
+              ⚙️ View E-Commerce &amp; Toast POS Strategy
+            </button>
+            <button class="btn btn-secondary" style="width:100%;" data-action="go-category" data-category="All">
+              Shop In-Store Ready Inventory
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram & Brand Community Grid ("Shop the Look") -->
+    <section class="community-section">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <span class="eyebrow">@ROSELIAATELIER • #ROSELIAGLOW</span>
+            <h2 class="section-title">Instagram <em>Shop the Look</em> Community</h2>
+          </div>
+          <p class="section-subtitle">
+            Click any look from our stylists and community muses to inspect the exact shades, bundles, and tools used—complete with live shelf stock status.
+          </p>
+        </div>
+
+        <div class="insta-grid" id="home-insta-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       4. SPA VIEW 2: SCALABLE CATEGORY / CATALOG VIEW (#view-catalog)
+       ======================================================================== -->
+  <section id="view-catalog" class="spa-view">
+    <div class="catalog-banner">
+      <div class="container">
+        <div class="breadcrumb-bar" style="margin-bottom:0.65rem;">
+          <button data-action="nav-home">Home</button>
+          <span>/</span>
+          <span style="color:var(--pink-magenta); font-weight:600;" id="catalog-breadcrumb-dept">Complete Catalog</span>
+        </div>
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1.25rem;">
+          <div class="catalog-banner-text-anim" id="catalog-banner-text-wrap">
+            <span class="eyebrow" id="catalog-dept-eyebrow">DEPARTMENT OVERVIEW • TOAST POS SYNCED</span>
+            <h1 class="section-title" id="catalog-heading-title" style="margin-top:0.25rem;">Complete Luxury Beauty Catalog</h1>
+            <p class="section-subtitle" id="catalog-heading-subtitle" style="margin-top:0.35rem;">
+              Architected for 2,400+ beauty supply SKUs with instant multi-attribute filtering and live Toast POS shelf synchronization.
+            </p>
+            <div class="catalog-dept-meta-pill" id="catalog-dept-meta-pill">
+              <span class="status-dot green"></span>
+              <span id="catalog-dept-meta-text">🟢 2,480 Total Beauty SKUs Synced on Floor</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary" data-action="trigger-pos-sync">
+            🟢 Sync Toast POS Shelf Counts (<span class="pos-sync-time-label">2 mins ago</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Category Department Ribbon (Seamless Switching at the Top Part of Screen) -->
+    <div class="catalog-dept-ribbon-bar">
+      <div class="container">
+        <nav class="dept-ribbon-track" id="catalog-dept-ribbon" aria-label="Department Categories Navigation"></nav>
+      </div>
+    </div>
+
+    <div class="container catalog-layout">
+      <!-- Sticky Sidebar Filters -->
+      <aside class="catalog-sidebar" aria-label="Catalog Filters">
+        <!-- Real-Time In-Store Availability Toggle -->
+        <div class="instore-toggle-box">
+          <div class="toggle-label-row" data-action="toggle-instore-filter">
+            <div>
+              <div style="font-size:0.82rem; font-weight:700; color:var(--text-espresso);">🟢 In-Store Pickup Ready</div>
+              <div style="font-size:0.72rem; color:var(--text-mauve);">Hide Temporarily Out-of-Stock</div>
+            </div>
+            <div class="toggle-switch" id="catalog-instore-switch"></div>
+          </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">
+            <span>Category Department</span>
+          </div>
+          <div class="filter-option-list" id="filter-category-list"></div>
+        </div>
+
+        <!-- Brand Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">
+            <span>Brand</span>
+          </div>
+          <div class="filter-option-list" id="filter-brand-list"></div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">
+            <span>Price Tier</span>
+          </div>
+          <div class="filter-option-list">
+            <label class="filter-checkbox-label">
+              <span class="filter-checkbox-left">
+                <input type="radio" name="price-filter" value="all" checked data-action="filter-price" />
+                <span>All Prices</span>
+              </span>
+            </label>
+            <label class="filter-checkbox-label">
+              <span class="filter-checkbox-left">
+                <input type="radio" name="price-filter" value="under30" data-action="filter-price" />
+                <span>Under $30 (Everyday Essentials)</span>
+              </span>
+            </label>
+            <label class="filter-checkbox-label">
+              <span class="filter-checkbox-left">
+                <input type="radio" name="price-filter" value="30to100" data-action="filter-price" />
+                <span>$30 – $100 (Pro Treatments &amp; Silk)</span>
+              </span>
+            </label>
+            <label class="filter-checkbox-label">
+              <span class="filter-checkbox-left">
+                <input type="radio" name="price-filter" value="over100" data-action="filter-price" />
+                <span>$100+ (HD Wigs, Raw Bundles &amp; Irons)</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Hair Type / Beauty Concern Filter -->
+        <div class="filter-group">
+          <div class="filter-group-title">
+            <span>Hair Type &amp; Concern</span>
+          </div>
+          <div class="filter-option-list" id="filter-concern-list"></div>
+        </div>
+      </aside>
+
+      <!-- Right Catalog Main Area -->
+      <div>
+        <div class="catalog-toolbar">
+          <div style="font-size:0.84rem; color:var(--text-mauve);" id="catalog-results-count">
+            Showing curated beauty SKUs
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+            <div style="display:inline-flex; gap:0.3rem; background:var(--bg-ivory); padding:0.2rem; border-radius:var(--radius-pill); border:1px solid var(--border-subtle);">
+              <button class="sim-state-btn" data-action="set-grid-cols" data-cols="3" title="3 Columns">3 Col</button>
+              <button class="sim-state-btn" data-action="set-grid-cols" data-cols="4" title="4 Columns">4 Col</button>
+            </div>
+            <label for="catalog-sort-select" style="font-size:0.8rem; font-weight:600;">Sort By:</label>
+            <select id="catalog-sort-select" class="sort-select">
+              <option value="featured">Featured &amp; Bestselling</option>
+              <option value="instock-first">🟢 In-Store Stock Priority</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Customer Rating</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active Filter Pills -->
+        <div class="active-filters-bar" id="catalog-active-chips"></div>
+
+        <!-- Product Grid -->
+        <div class="product-grid cols-3" id="catalog-product-grid"></div>
+
+        <!-- Clean Pagination / Load More -->
+        <div class="pagination-box" id="catalog-pagination-box"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. SPA VIEW 3: PRODUCT DETAIL PAGE (#view-pdp)
+       ======================================================================== -->
+  <section id="view-pdp" class="spa-view pdp-section">
+    <div class="container" id="pdp-dynamic-container"></div>
+  </section>
+
+  <!-- ========================================================================
+       6. LUXURY FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo-title" style="color:var(--bg-white); margin-bottom:0.5rem;">
+            ROSÉLIA <span style="color:var(--pink-dusty);">ATELIER</span>
+          </div>
+          <p style="font-size:0.85rem; color:rgba(250,248,245,0.75); margin-bottom:1.2rem;">
+            Modern luxury beauty supply &amp; extension bar combining Glossier-inspired digital elegance with real-time Toast POS physical shelf verification.
+          </p>
+          <div class="pos-live-pill" data-action="open-strategy-modal">
+            <span class="pulse-dot-green"></span>
+            <span>Toast POS Sync Architecture Active</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-gold); margin-bottom:0.9rem;">Departments</h4>
+          <ul style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.84rem; color:rgba(250,248,245,0.8);">
+            <li><button data-action="go-category" data-category="Wigs & Extensions">13x6 HD Lace Wigs &amp; Bundles</button></li>
+            <li><button data-action="go-category" data-category="Hair Care">Honey &amp; Silk Hair Care</button></li>
+            <li><button data-action="go-category" data-category="Skincare">Glass Skin Barrier Serums</button></li>
+            <li><button data-action="go-category" data-category="Makeup">Peptide Lip Oils &amp; Cloud Blush</button></li>
+            <li><button data-action="go-category" data-category="Tools & Accessories">Titanium Irons &amp; Mulberry Silk</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-gold); margin-bottom:0.9rem;">Omnichannel Perks</h4>
+          <ul style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.84rem; color:rgba(250,248,245,0.8);">
+            <li><button data-action="open-strategy-modal">Pre-Auth Checkout Guarantee</button></li>
+            <li><button data-action="open-strategy-modal">1-Hour Flagship Store Pickup</button></li>
+            <li><button data-action="open-strategy-modal">Licensed Stylist Pro Discount</button></li>
+            <li><button data-action="open-strategy-modal">Toast POS Restock Alerts</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent-gold); margin-bottom:0.9rem;">Join the Rosélia VIP List</h4>
+          <p style="font-size:0.82rem; color:rgba(250,248,245,0.75); margin-bottom:0.85rem;">
+            Get 15% off your first order + instant SMS alerts when Raw Vietnamese Bundles &amp; Viral Lip Oils restock in Toast POS.
+          </p>
+          <div style="display:flex; gap:0.4rem;">
+            <input type="email" placeholder="Enter your email..." style="flex:1; padding:0.65rem 0.9rem; border-radius:var(--radius-pill); background:rgba(255,255,255,0.1); border:1px solid rgba(244,172,183,0.35); color:var(--bg-white); font-size:0.82rem;" />
+            <button class="btn btn-primary" style="padding:0.65rem 1.15rem;" data-action="trigger-pos-sync">Join</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:0.78rem; color:rgba(250,248,245,0.6);">
+        <span>© 2026 Rosélia Atelier Beauty Supply. Interactive Luxury E-Commerce Prototype.</span>
+        <span>Palette: Soft Blush #FFF0F3 • Dusty Rose #F4ACB7 • Vibrant Rose #E05780 • Champagne Gold #D4AF37</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       7. GLASSMORPHISM BACKDROP & SLIDE-OVER DRAWERS (CART & MOBILE MENU)
+       ======================================================================== -->
+  <div class="glass-backdrop" id="global-backdrop" data-action="close-drawers"></div>
+
+  <!-- Slide-Out Shopping Cart Drawer -->
+  <aside class="slide-drawer slide-drawer-right" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>Your Rosélia Bag</span>
+        <span class="editorial-tag tag-pink"><span class="cart-count-badge">2</span> Items</span>
+      </div>
+      <button class="icon-btn" data-action="close-drawers" aria-label="Close Cart">✕</button>
+    </div>
+
+    <div class="shipping-meter-bar">
+      <div id="cart-shipping-text">Add more for FREE Shipping Over $50</div>
+      <div class="shipping-meter-track">
+        <div class="shipping-meter-fill" id="cart-shipping-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="drawer-body">
+      <div id="cart-items-container"></div>
+
+      <!-- Required Store Pickup & Order Verification Notice in Slide-Out Cart Drawer -->
+      <div class="verification-guarantee-banner" style="margin-top:0.75rem; margin-bottom:0;">
+        <div class="verification-guarantee-icon">✓</div>
+        <div class="verification-guarantee-text">
+          <strong>Stock Confirmation Guarantee</strong>
+          To prevent overselling, your card is only pre-authorized at checkout. Our in-store team verifies physical shelf availability via Toast POS before finalizing and fulfilling your order.
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+        <span style="font-size:0.85rem; color:var(--text-mauve);">Estimated Pre-Auth Subtotal</span>
+        <strong style="font-size:1.25rem;" id="cart-subtotal-amount">$68.00</strong>
+      </div>
+      <div style="font-size:0.74rem; color:var(--text-mauve); margin-bottom:1rem;">
+        Card is only pre-authorized today • Final capture occurs after Toast POS shelf scan.
+      </div>
+      <button class="btn btn-primary" style="width:100%;" data-action="open-checkout-sim">
+        🔒 Proceed to Pre-Authorized Checkout →
+      </button>
+    </div>
+  </aside>
+
+  <!-- Slide-Out Mobile Navigation Drawer -->
+  <aside class="slide-drawer slide-drawer-left" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <div class="drawer-title">ROSÉLIA ATELIER</div>
+      <button class="icon-btn" data-action="close-drawers" aria-label="Close Menu">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div style="display:flex; flex-direction:column; gap:0.65rem;">
+        <button class="btn btn-secondary" style="justify-content:flex-start;" data-action="nav-home">
+          <span>Home</span>
+        </button>
+        <button class="btn btn-secondary" style="justify-content:flex-start;" data-action="go-category" data-category="Wigs & Extensions">
+          <span>Wigs &amp; Extensions</span>
+        </button>
+        <button class="btn btn-secondary" style="justify-content:flex-start;" data-action="go-category" data-category="Hair Care">
+          <span>Hair Care</span>
+        </button>
+        <button class="btn btn-secondary" style="justify-content:flex-start;" data-action="go-category" data-category="Skincare">
+          <span>Skincare</span>
+        </button>
+        <button class="btn btn-secondary" style="justify-content:flex-start;" data-action="go-category" data-category="Makeup">
+          <span>Makeup</span>
+        </button>
+        <button class="btn btn-secondary" style="justify-content:flex-start;" data-action="go-category" data-category="Tools & Accessories">
+          <span>Tools &amp; Accessories</span>
+        </button>
+        <button class="btn btn-primary" style="margin-top:1rem;" data-action="open-strategy-modal">
+          ⚙️ View E-Commerce &amp; Toast POS Strategy
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       8. INTERACTIVE MODALS (NOTIFY ME, SHOP THE LOOK, CHECKOUT, STRATEGY)
+       ======================================================================== -->
+
+  <!-- Modal 1: "Notify Me When Back" Email/SMS Capture Modal -->
+  <div class="modal-container" id="modal-notify">
+    <div class="modal-card">
+      <div class="drawer-header">
+        <div class="drawer-title">🔔 Back-in-Stock VIP Alert</div>
+        <button class="icon-btn" data-action="close-drawers">✕</button>
+      </div>
+      <div style="padding:1.5rem;" id="modal-notify-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Instagram "Shop the Look" Modal -->
+  <div class="modal-container" id="modal-look">
+    <div class="modal-card" style="max-width:740px;">
+      <div class="drawer-header">
+        <div class="drawer-title">📸 Shop the Rosélia Community Look</div>
+        <button class="icon-btn" data-action="close-drawers">✕</button>
+      </div>
+      <div style="padding:1.5rem;" id="modal-look-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Pre-Authorization Checkout & Toast POS Verification Simulator -->
+  <div class="modal-container" id="modal-checkout-sim">
+    <div class="modal-card">
+      <div class="drawer-header">
+        <div class="drawer-title">🔒 Pre-Auth Checkout &amp; POS Verification</div>
+        <button class="icon-btn" data-action="close-drawers">✕</button>
+      </div>
+      <div style="padding:1.5rem;" id="modal-checkout-sim-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Owner/Client "View E-Commerce & Toast POS Strategy" Modal -->
+  <div class="modal-container" id="modal-strategy">
+    <div class="modal-card modal-xl">
+      <div class="drawer-header" style="background:linear-gradient(135deg, #2B2123 0%, #3E2A30 100%); color:var(--bg-white);">
+        <div>
+          <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--accent-gold); text-transform:uppercase; letter-spacing:0.12em;">
+            Architecture &amp; Executive Blueprint
+          </span>
+          <div class="drawer-title" style="color:var(--bg-white);">
+            E-Commerce &amp; Toast POS Omnichannel Strategy
+          </div>
+        </div>
+        <button class="icon-btn" data-action="close-drawers">✕</button>
+      </div>
+
+      <div class="strategy-tab-nav">
+        <button class="strategy-tab-btn active" data-strategy-tab="platforms">
+          1. Scalable E-Commerce Platforms
+        </button>
+        <button class="strategy-tab-btn" data-strategy-tab="middleware">
+          2. Toast POS Middleware &amp; Sync Bridges
+        </button>
+        <button class="strategy-tab-btn" data-strategy-tab="preauth">
+          3. "Verify Before Fulfillment" Pre-Auth Flow
+        </button>
+        <button class="strategy-tab-btn" data-strategy-tab="simulator">
+          4. ⚡ Live POS Stock Simulator
+        </button>
+      </div>
+
+      <div style="padding:1.75rem;" id="strategy-modal-tab-content"></div>
+
+      <div class="drawer-footer" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <span style="font-size:0.8rem; color:var(--text-mauve);">
+          Designed for high-SKU velocity beauty supply operations using Toast POS in-store.
+        </span>
+        <button class="btn btn-primary" data-action="close-drawers">Return to Interactive Storefront</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       9. DISCREET FLOATING BUTTON: "View E-Commerce & Toast POS Strategy"
+       ======================================================================== -->
+  <button class="floating-strategy-btn" data-action="open-strategy-modal">
+    <span class="pulse-dot-green"></span>
+    <strong>View E-Commerce &amp; Toast POS Strategy</strong>
+  </button>
+
+  <!-- Live Toast Notification Popup -->
+  <div class="toast-notification" id="live-toast-popup" role="status" aria-live="polite">
+    <span class="pulse-dot-green"></span>
+    <div id="live-toast-text">Synced with Toast POS</div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
