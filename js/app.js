@@ -1779,8 +1779,60 @@
     }
   }
 
+  /* ==========================================================================
+     LUXURY PRELOADER ANIMATION CONTROLLER
+     ========================================================================== */
+  function initPreloader() {
+    const preloader = document.getElementById("luxury-preloader");
+    const barFill = document.getElementById("preloader-progress-fill");
+    const statusText = document.getElementById("preloader-status-text");
+    if (!preloader) return;
+
+    let isDismissed = false;
+    const dismiss = () => {
+      if (isDismissed) return;
+      isDismissed = true;
+      if (barFill) barFill.style.width = "100%";
+      if (statusText) statusText.textContent = "Welcome to Rosélia Atelier";
+      setTimeout(() => {
+        preloader.classList.add("loaded");
+      }, 260);
+    };
+
+    // Click to fast-forward
+    preloader.addEventListener("click", dismiss);
+
+    // Step 1: Initialize Toast POS telemetry
+    setTimeout(() => {
+      if (isDismissed) return;
+      if (barFill) barFill.style.width = "38%";
+      if (statusText) statusText.textContent = "Connecting to Toast POS Floor Scanners...";
+    }, 120);
+
+    // Step 2: Sync SKUs
+    setTimeout(() => {
+      if (isDismissed) return;
+      if (barFill) barFill.style.width = "74%";
+      if (statusText) statusText.textContent = "Syncing 2,480 Beauty & Hair SKUs...";
+    }, 550);
+
+    // Step 3: Verified status
+    setTimeout(() => {
+      if (isDismissed) return;
+      if (barFill) barFill.style.width = "96%";
+      if (statusText) statusText.textContent = "1-Hour Shelf Pickup: Verified & Ready";
+    }, 1050);
+
+    // Step 4: Complete and fade out
+    setTimeout(() => {
+      dismiss();
+    }, 1450);
+  }
+
   /* Initialize Application */
   document.addEventListener("DOMContentLoaded", () => {
+    initPreloader();
+
     // Graceful luxury fallback if an image is blocked or offline
     document.addEventListener(
       "error",

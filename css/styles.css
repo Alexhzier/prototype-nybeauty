@@ -65,6 +65,167 @@
 }
 
 /* ==========================================================================
+   0. LUXURY PRELOADER LOADING SCREEN
+   ========================================================================== */
+.luxury-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-ivory);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.luxury-preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+
+.preloader-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #FFF0F3 0%, #FAF8F5 70%, #F5EFEB 100%);
+  z-index: 1;
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.25rem;
+  max-width: 480px;
+}
+
+/* Luxury Gyroscopic Rings */
+.preloader-crest {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.65rem;
+}
+
+.crest-ring {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.crest-ring-outer {
+  inset: 0;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  border-top-color: var(--pink-magenta);
+  border-right-color: var(--accent-gold);
+  animation: preloaderSpin 2.6s linear infinite;
+}
+
+.crest-ring-inner {
+  inset: 10px;
+  border: 1.5px dashed rgba(244, 172, 183, 0.75);
+  border-bottom-color: var(--pink-magenta);
+  animation: preloaderSpinReverse 3.8s linear infinite;
+}
+
+@keyframes preloaderSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes preloaderSpinReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.crest-core {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 1.5px solid var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px var(--pink-magenta-glow);
+}
+
+.crest-monogram {
+  font-family: var(--font-serif);
+  font-size: 1.95rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--pink-magenta);
+  line-height: 1;
+}
+
+.preloader-brand {
+  margin-bottom: 1.75rem;
+}
+
+.preloader-title {
+  font-family: var(--font-serif);
+  font-size: 2.15rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-espresso);
+  line-height: 1;
+  margin-bottom: 0.45rem;
+}
+
+.preloader-title span {
+  color: var(--pink-magenta);
+}
+
+.preloader-sub {
+  font-size: 0.74rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--text-mauve);
+}
+
+/* Progress Box & Live Telemetry */
+.preloader-progress-box {
+  width: 290px;
+}
+
+.preloader-bar-track {
+  width: 100%;
+  height: 3px;
+  background: var(--pink-blush-deep);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.preloader-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--pink-dusty), var(--pink-magenta));
+  border-radius: 99px;
+  transition: width 0.35s ease-out;
+}
+
+.preloader-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-mauve);
+}
+
+/* ==========================================================================
    BASE & RESET
    ========================================================================== */
 *, *::before, *::after {
