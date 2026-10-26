@@ -163,51 +163,33 @@
      ========================================================================== */
   const DEPARTMENT_META = {
     "All": {
-      eyebrow: "COMPLETE CATALOG • TOAST POS SYNCED",
-      title: "Complete Luxury Beauty Catalog",
-      subtitle: "Explore 2,480+ curated beauty supplies, virgin hair units, and pro salon formulas synced in real time with our SoHo flagship floor scanners.",
-      icon: "✨",
-      meta: "🟢 2,480 Total Beauty SKUs Synced on Floor",
+      title: "All Collections",
+      subtitle: "2,480 curated beauty formulas, virgin human hair units, and pro styling tools.",
       count: "2,480"
     },
     "Wigs & Extensions": {
-      eyebrow: "DEPARTMENT 01 • VIRGIN HAIR & MELT BAR",
-      title: "HD Lace Wigs & Raw Bundles",
-      subtitle: "Single-donor raw Vietnamese & Cambodian bundles, 13x6 Swiss HD melt frontals, glueless units, and seamless clip-ins inspected for root-to-tip fullness.",
-      icon: "👑",
-      meta: "🟢 420+ HD Lace Units & Bundles in Vault",
+      title: "Wigs & Extensions",
+      subtitle: "Raw single-donor bundles, 13x6 HD Swiss lace units, and glueless melt essentials.",
       count: "420"
     },
     "Hair Care": {
-      eyebrow: "DEPARTMENT 02 • HONEY & SILK INFUSIONS",
-      title: "Honey & Silk Hair Care",
-      subtitle: "Wildflower honey elixirs, bond-repair collagen masques, 4C defining gels, and weightless silk-press finishing oils crafted for natural texture and extensions.",
-      icon: "🍯",
-      meta: "🟢 680 Hair Care & Edge Formulas Synced",
+      title: "Hair Care",
+      subtitle: "French rosehip & honey elixirs, bond-repair masques, and coil sculpting care.",
       count: "680"
     },
     "Skincare": {
-      eyebrow: "DEPARTMENT 03 • GLASS SKIN SANCTUARY",
-      title: "Glass Skin Barrier Care",
-      subtitle: "Damask rosewater mists, copper multi-peptide barrier serums, and whipped ceramide cloud creams for an effortless, lit-from-within complexion.",
-      icon: "🌸",
-      meta: "🟢 520 Skincare SKUs Synced on Shelves",
+      title: "Skincare",
+      subtitle: "Multi-peptide barrier serums, rosewater dew mists, and whipped cloud creams.",
       count: "520"
     },
     "Makeup": {
-      eyebrow: "DEPARTMENT 04 • GLOW & DEW ESSENTIALS",
-      title: "Peptide Lip Oils & Cloud Flush",
-      subtitle: "Plumping peptide lip treatment oils, watercolor whipped soufflé blushes, and soft-focus setting veils inspired by effortless clean-girl glam.",
-      icon: "💄",
-      meta: "🟢 490 Makeup SKUs Synced at Front Bar",
+      title: "Makeup",
+      subtitle: "Peptide plumping lip oils, whipped watercolor blushes, and soft-focus tints.",
       count: "490"
     },
     "Tools & Accessories": {
-      eyebrow: "DEPARTMENT 05 • SALON HARDWARE & SILK",
-      title: "Pro Styling Tools & Mulberry Silk",
-      subtitle: "Champagne titanium 450°F silk-press irons, 22-momme pure mulberry silk double-lined bonnets, lace melt bands, and high-precision sectioning tools.",
-      icon: "⚡",
-      meta: "🟢 370 Pro Tools & Silk Bonnets in Stock",
+      title: "Tools & Accessories",
+      subtitle: "Champagne titanium silk-press irons, 22-momme pure silk bonnets, and melt bands.",
       count: "370"
     }
   };
@@ -222,7 +204,7 @@
     });
   }
 
-  /* Unified Seamless Department Switcher with Fluid Stagger Transitions */
+  /* Unified Seamless Department Switcher with Fluid Two-Phase Text & Stagger Transitions */
   function switchCategoryDepartment(targetCat, options = {}) {
     closeAllDrawers();
     const prevCat = state.catalogFilters.category;
@@ -242,36 +224,32 @@
     // Seamless in-place transition when already on Catalog view
     updateHeaderCategoryActive();
     const grid = document.getElementById("catalog-product-grid");
-    const bannerWrap = document.getElementById("catalog-banner-text-wrap");
+    const bannerText = document.getElementById("catalog-banner-text-wrap");
 
-    if (grid) {
-      grid.classList.add("grid-transitioning");
-    }
-    if (bannerWrap) {
-      bannerWrap.classList.remove("animating");
-      void bannerWrap.offsetWidth;
-      bannerWrap.classList.add("animating");
+    // Phase 1: Soft fade-out of current title & subtitle
+    if (grid) grid.classList.add("grid-transitioning");
+    if (bannerText) {
+      bannerText.classList.remove("text-fade-in");
+      bannerText.classList.add("text-fade-out");
     }
 
+    // Phase 2: Update content while invisible, then fade in with gentle upward glide
     setTimeout(() => {
       renderCatalogView();
-      if (grid) {
-        grid.classList.remove("grid-transitioning");
+      if (grid) grid.classList.remove("grid-transitioning");
+      if (bannerText) {
+        bannerText.classList.remove("text-fade-out");
+        bannerText.classList.add("text-fade-in");
       }
-      // Gentle smooth scroll to ribbon if user was scrolled deep down
-      if (window.scrollY > 280) {
+
+      // Smooth scroll only if user scrolled past the ribbon bar
+      if (window.scrollY > 240) {
         const topBar = document.querySelector(".catalog-dept-ribbon-bar");
         if (topBar) {
           topBar.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
       }
-    }, 150);
-
-    setTimeout(() => {
-      if (bannerWrap) {
-        bannerWrap.classList.remove("animating");
-      }
-    }, 420);
+    }, 180);
   }
 
   /* ==========================================================================
@@ -536,18 +514,14 @@
     const filtered = getFilteredCatalogProducts();
     const deptInfo = DEPARTMENT_META[f.category] || DEPARTMENT_META["All"];
 
-    // Update Banner Department Text & Telemetry
+    // Update Banner Department Text (Clean, Elevated & Uncluttered)
     const titleEl = document.getElementById("catalog-heading-title");
     const subEl = document.getElementById("catalog-heading-subtitle");
-    const eyebrowEl = document.getElementById("catalog-dept-eyebrow");
-    const metaTextEl = document.getElementById("catalog-dept-meta-text");
     const breadcrumbDeptEl = document.getElementById("catalog-breadcrumb-dept");
 
     if (titleEl) titleEl.textContent = deptInfo.title;
     if (subEl) subEl.textContent = deptInfo.subtitle;
-    if (eyebrowEl) eyebrowEl.textContent = deptInfo.eyebrow;
-    if (metaTextEl) metaTextEl.textContent = deptInfo.meta;
-    if (breadcrumbDeptEl) breadcrumbDeptEl.textContent = f.category === "All" ? "Complete Catalog" : f.category;
+    if (breadcrumbDeptEl) breadcrumbDeptEl.textContent = f.category === "All" ? "All Collections" : f.category;
 
     // Render Top Category Department Ribbon (Top Navigation for Categories)
     const ribbonEl = document.getElementById("catalog-dept-ribbon");
@@ -555,13 +529,11 @@
       const depts = ["All", "Wigs & Extensions", "Hair Care", "Skincare", "Makeup", "Tools & Accessories"];
       ribbonEl.innerHTML = depts
         .map((d) => {
-          const meta = DEPARTMENT_META[d] || DEPARTMENT_META["All"];
           const count = d === "All" ? DATA.products.length : DATA.products.filter((p) => p.category === d).length;
           const isActive = f.category === d;
           return `
             <button class="dept-pill-btn ${isActive ? "active" : ""}" data-action="go-category" data-category="${d}">
-              <span>${meta.icon}</span>
-              <span>${d === "All" ? "All Departments" : d}</span>
+              <span>${d === "All" ? "All Collections" : d}</span>
               <span class="dept-badge">${count}</span>
             </button>
           `;

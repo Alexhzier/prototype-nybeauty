@@ -305,26 +305,18 @@
   <section id="view-catalog" class="spa-view">
     <div class="catalog-banner">
       <div class="container">
-        <div class="breadcrumb-bar" style="margin-bottom:0.65rem;">
+        <div class="breadcrumb-bar" style="margin-bottom:0.5rem;">
           <button data-action="nav-home">Home</button>
           <span>/</span>
-          <span style="color:var(--pink-magenta); font-weight:600;" id="catalog-breadcrumb-dept">Complete Catalog</span>
+          <span style="color:var(--pink-magenta); font-weight:600;" id="catalog-breadcrumb-dept">All Collections</span>
         </div>
-        <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1.25rem;">
-          <div class="catalog-banner-text-anim" id="catalog-banner-text-wrap">
-            <span class="eyebrow" id="catalog-dept-eyebrow">DEPARTMENT OVERVIEW • TOAST POS SYNCED</span>
-            <h1 class="section-title" id="catalog-heading-title" style="margin-top:0.25rem;">Complete Luxury Beauty Catalog</h1>
-            <p class="section-subtitle" id="catalog-heading-subtitle" style="margin-top:0.35rem;">
-              Architected for 2,400+ beauty supply SKUs with instant multi-attribute filtering and live Toast POS shelf synchronization.
+        <div class="catalog-banner-inner">
+          <div class="catalog-banner-text-anim text-fade-in" id="catalog-banner-text-wrap">
+            <h1 class="catalog-page-title" id="catalog-heading-title">All Collections</h1>
+            <p class="catalog-page-subtitle" id="catalog-heading-subtitle">
+              2,480 curated beauty formulas, virgin human hair units, and pro styling tools.
             </p>
-            <div class="catalog-dept-meta-pill" id="catalog-dept-meta-pill">
-              <span class="status-dot green"></span>
-              <span id="catalog-dept-meta-text">🟢 2,480 Total Beauty SKUs Synced on Floor</span>
-            </div>
           </div>
-          <button class="btn btn-secondary" data-action="trigger-pos-sync">
-            🟢 Sync Toast POS Shelf Counts (<span class="pos-sync-time-label">2 mins ago</span>)
-          </button>
         </div>
       </div>
     </div>
