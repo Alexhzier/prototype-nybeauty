@@ -2631,6 +2631,28 @@ ul {
 }
 
 @media (max-width: 820px) {
+  /* Remove noisy In-Store Pickup notification & sync button on mobile/tablet */
+  .announcement-bar {
+    position: static;
+    padding: 0.42rem 0;
+  }
+  .announcement-pickup-item,
+  .announcement-pickup-dot {
+    display: none !important;
+  }
+  .announcement-bar .pos-live-pill {
+    display: none !important;
+  }
+  .announcement-inner {
+    justify-content: center;
+    text-align: center;
+  }
+  .announcement-perks {
+    justify-content: center;
+    gap: 0.65rem;
+    font-size: 0.74rem;
+  }
+
   .hero-grid,
   .pdp-main-grid,
   .pos-highlight-grid {
@@ -2659,6 +2681,25 @@ ul {
 }
 
 @media (max-width: 540px) {
+  /* Mobile Phone View: Remove secondary guarantee clutter, display clean single-line luxury shipping perk */
+  .announcement-preauth-dot,
+  .announcement-preauth-item {
+    display: none !important;
+  }
+  .announcement-bar {
+    padding: 0.38rem 0;
+  }
+  .announcement-perks {
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  .announcement-ship-item {
+    display: inline-block;
+  }
+
   .product-grid,
   .product-grid.cols-3,
   .insta-grid,

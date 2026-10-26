@@ -1820,7 +1820,7 @@
     setTimeout(() => {
       if (isDismissed) return;
       if (barFill) barFill.style.width = "96%";
-      if (statusText) statusText.textContent = "1-Hour Shelf Pickup: Verified & Ready";
+      if (statusText) statusText.textContent = "Luxury Catalog: Synced & Ready";
     }, 1050);
 
     // Step 4: Complete and fade out
